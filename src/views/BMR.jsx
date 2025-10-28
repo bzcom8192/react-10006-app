@@ -1,4 +1,4 @@
-import { CakeRounded, ScaleRounded, StraightenRounded } from "@mui/icons-material"
+import { CakeRounded, RadioButtonUncheckedRounded, ScaleRounded, StraightenRounded, TaskAltRounded } from "@mui/icons-material"
 import { useState } from "react"
 
 export default function BMR() {
@@ -104,28 +104,44 @@ export default function BMR() {
 					<div className='w-full mt-4 flex flex-col gap-2'>
 						<span className='text-lg'>เพศ:</span>
 						<div className='flex gap-2 text-base'>
-							<input
-								type='radio'
-								id='male'
-								name='gender'
-								value='male'
-								onChange={(e) => setGender(e.target.value)}
-							/>
-							<label htmlFor='male'>
-								ชาย
-							</label>
+							<span className="flex items-center gap-2 **:cursor-pointer"
+								onClick={() => setGender('male')}
+							>
+								{gender == "male" ?
+									(
+										<TaskAltRounded
+											className="text-blue-600"
+										/>
+									) : (
+										<RadioButtonUncheckedRounded
+											className="text-gray-300"
+										/>
+									)
+								}
+								<label htmlFor='male'>
+									ชาย
+								</label>
+							</span>
 						</div>
 						<div className='flex gap-2 text-base'>
-							<input
-								type='radio'
-								id='female'
-								name='gender'
-								value='female'
-								onChange={(e) => setGender(e.target.value)}
-							/>
-							<label htmlFor='female'>
-								หญิง
-							</label>
+							<span className="flex items-center gap-2 **:cursor-pointer"
+								onClick={() => setGender('female')}
+							>
+								{gender == "female" ?
+									(
+										<TaskAltRounded
+											className="text-blue-600"
+										/>
+									) : (
+										<RadioButtonUncheckedRounded
+											className="text-gray-300"
+										/>
+									)
+								}
+								<label htmlFor='male'>
+									หญิง
+								</label>
+							</span>
 						</div>
 					</div>
 					<div className='flex flex-col gap-2 mt-6 w-full'>
