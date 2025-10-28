@@ -1,3 +1,4 @@
+import { CakeRounded, ScaleRounded, StraightenRounded } from "@mui/icons-material"
 import { useState } from "react"
 
 export default function BMR() {
@@ -50,9 +51,12 @@ export default function BMR() {
 						width={96}
 					/>
 					<div className='w-full mt-4 flex flex-col gap-2'>
-						<label htmlFor='weight' className='text-base text-gray-500'>
-							ป้อนน้ำหนัก (กิโลกรัม)
-						</label>
+						<div className="flex gap-2">
+							<ScaleRounded />
+							<label htmlFor='weight' className='text-base text-gray-500'>
+								ป้อนน้ำหนัก (กิโลกรัม)
+							</label>
+						</div>
 						<input
 							type='number'
 							id='weight'
@@ -64,9 +68,12 @@ export default function BMR() {
 						/>
 					</div>
 					<div className='w-full mt-4 flex flex-col gap-2'>
-						<label htmlFor='height' className='text-base text-gray-500'>
-							ป้อนส่วนสูง (เซนติเมตร)
-						</label>
+						<div className="flex gap-2">
+							<StraightenRounded />
+							<label htmlFor='height' className='text-base text-gray-500'>
+								ป้อนส่วนสูง (เซนติเมตร)
+							</label>
+						</div>
 						<input
 							type='number'
 							id='height'
@@ -78,9 +85,12 @@ export default function BMR() {
 						/>
 					</div>
 					<div className='w-full mt-4 flex flex-col gap-2'>
-						<label htmlFor='age' className='text-base text-gray-500'>
-							ป้อนอายุ (ปี)
-						</label>
+						<div className="flex gap-2">
+							<CakeRounded />
+							<label htmlFor='age' className='text-base text-gray-500'>
+								ป้อนอายุ (ปี)
+							</label>
+						</div>
 						<input
 							type='number'
 							id='age'
