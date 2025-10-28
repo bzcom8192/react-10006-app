@@ -1,54 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Bmi() {
+  const [weight, setWeight] = useState('')
+  const [height, setHeight] = useState('')
+  const [result, setResult] = useState('0.00')
+
+  const handleCalculateBMI = () => {
+    if (weight && height) {
+      const heightInMeters = height / 100
+      const bmi = weight / (heightInMeters * heightInMeters)
+      setResult(bmi.toFixed(2))
+    }
+  }
+
+  const handleReset = () => {
+    setWeight('')
+    setHeight('')
+    setResult('0.00')
+  }
+
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100%",
-        fontSize: "24px"
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "1rem",
-            boxShadow: "0 6px 16px rgba(0, 0, 0, 0.1)",
-            backgroundColor: "#fff",
-            minWidth: "400px",
-            borderRadius: "16px"
-          }}
-        >
-          <div
-            style={{
-              fontSize: "2rem",
-              fontWeight: "bold"
-            }}
-          >
+    <div className='flex flex-col justify-center items-center h-screen w-full text-lg'>
+      <div className='flex justify-center items-center gap-4'>
+        <div className='flex flex-col items-center p-4 border border-gray-300 shadow-md drop-shadow-xl min-w-[400px] rounded-2xl bg-white'>
+          <div className='text-3xl font-bold'>
             BMI Calculator
           </div>
-          <div
-            style={{
-              fontSize: "14px",
-              color: "#666",
-              marginBottom: "16px"
-            }}
-          >
+          <div className='text-base text-gray-500 mb-4'>
             คำนวณ BMI
           </div>
           <img
@@ -56,21 +35,8 @@ export default function Bmi() {
             alt='BMI Calculator'
             width={64}
           />
-          <div
-            style={{
-              width: "100%",
-              marginTop: "16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px"
-            }}
-          >
-            <label htmlFor='weight'
-              style={{
-                fontSize: "14px",
-                color: "#444"
-              }}
-            >
+          <div className='w-full mt-4 flex flex-col gap-2'>
+            <label htmlFor='weight' className='text-base text-gray-500'>
               ป้อนน้ำหนัก (กิโลกรัม)
             </label>
             <input
@@ -78,28 +44,13 @@ export default function Bmi() {
               id='weight'
               name='weight'
               placeholder='เช่น 65'
-              style={{
-                padding: "8px 12px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-              }}
+              className='px-3 py-2 rounded-md border border-gray-300'
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
             />
           </div>
-          <div
-            style={{
-              width: "100%",
-              marginTop: "16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px"
-            }}
-          >
-            <label htmlFor='height'
-              style={{
-                fontSize: "14px",
-                color: "#444"
-              }}
-            >
+          <div className='w-full mt-4 flex flex-col gap-2'>
+            <label htmlFor='height' className='text-base text-gray-500'>
               ป้อนส่วนสูง (เซนติเมตร)
             </label>
             <input
@@ -107,71 +58,29 @@ export default function Bmi() {
               id='height'
               name='height'
               placeholder='เช่น 170'
-              style={{
-                padding: "8px 12px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-              }}
+              className='px-3 py-2 rounded-md border border-gray-300'
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
             />
           </div>
           <button
-            style={{
-              marginTop: "24px",
-              padding: "8px 12px",
-              width: "100%",
-              backgroundColor: "#3f5cffff",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              cursor: "pointer",
-              fontWeight: "bold"
-            }}
+            onClick={handleCalculateBMI}
+            className='mt-6 px-4 py-2 w-full bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition-colors duration-300 cursor-pointer'
           >
             คำนวณ BMI
           </button>
           <button
-            style={{
-              marginTop: "8px",
-              padding: "8px 12px",
-              width: "100%",
-              backgroundColor: "#ddd",
-              color: "black",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              cursor: "pointer",
-              fontWeight: "600"
-            }}
+            onClick={handleReset}
+            className='mt-2 px-4 py-2 w-full bg-gray-300 text-black rounded-md font-semibold hover:bg-gray-400 transition-colors duration-300 cursor-pointer'
           >
             รีเซ็ต
           </button>
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "16px",
-              fontSize: "16px",
-              fontWeight: "500"
-            }}
-          >
-            ค่า BMI ที่คำนวณได้: <span style={{ color: "#3f5cffff" }}>0.00</span>
+          <div className='text-center mt-4 font-medium'>
+            ค่า BMI ที่คำนวณได้: <span className='text-blue-600'>{result}</span>
           </div>
           <a
             href='/'
-            style={{
-              marginTop: "8px",
-              padding: "8px 0",
-              width: "100%",
-              backgroundColor: "#ddd",
-              color: "black",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              cursor: "pointer",
-              fontWeight: "500",
-              textDecoration: "none",
-              textAlign: "center"
-            }}
+            className='mt-2 px-4 py-2 w-full text-center bg-gray-300 text-black rounded-md hover:bg-gray-400 transition-colors duration-300 cursor-pointer'
           >
             กลับหน้าหลัก
           </a>
