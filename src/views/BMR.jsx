@@ -38,7 +38,7 @@ export default function BMR() {
 	return (
 		<div className='flex flex-col items-center h-screen w-full text-lg'>
 			<div className='flex justify-center items-center gap-4 py-8 my-auto'>
-				<div className='flex flex-col items-center p-4 border border-gray-300 shadow-md drop-shadow-xl min-w-[500px] rounded-2xl bg-white'>
+				<div className='flex flex-col items-center p-4 border border-gray-300 shadow-md drop-shadow-xl min-w-[500px] rounded-2xl bg-white [&_input]:placeholder:text-base'>
 					<div className='text-3xl font-bold'>
 						BMR Calculator
 					</div>

@@ -1,3 +1,4 @@
+import { ScaleRounded, StraightenRounded } from '@mui/icons-material'
 import React, { useState } from 'react'
 
 export default function Bmi() {
@@ -23,7 +24,7 @@ export default function Bmi() {
   return (
     <div className='flex flex-col justify-center items-center h-screen w-full text-lg'>
       <div className='flex justify-center items-center gap-4'>
-        <div className='flex flex-col items-center p-4 border border-gray-300 shadow-md drop-shadow-xl min-w-[400px] rounded-2xl bg-white'>
+        <div className='flex flex-col items-center p-4 border border-gray-300 shadow-md drop-shadow-xl min-w-[400px] rounded-2xl bg-white [&_input]:placeholder:text-base'>
           <div className='text-3xl font-bold'>
             BMI Calculator
           </div>
@@ -36,9 +37,12 @@ export default function Bmi() {
             width={64}
           />
           <div className='w-full mt-4 flex flex-col gap-2'>
-            <label htmlFor='weight' className='text-base text-gray-500'>
-              ป้อนน้ำหนัก (กิโลกรัม)
-            </label>
+            <div className="flex gap-2">
+              <ScaleRounded />
+              <label htmlFor='weight' className='text-base text-gray-500'>
+                ป้อนน้ำหนัก (กิโลกรัม)
+              </label>
+            </div>
             <input
               type='number'
               id='weight'
@@ -50,9 +54,12 @@ export default function Bmi() {
             />
           </div>
           <div className='w-full mt-4 flex flex-col gap-2'>
-            <label htmlFor='height' className='text-base text-gray-500'>
-              ป้อนส่วนสูง (เซนติเมตร)
-            </label>
+            <div className="flex gap-2">
+              <StraightenRounded />
+              <label htmlFor='height' className='text-base text-gray-500'>
+                ป้อนส่วนสูง (เซนติเมตร)
+              </label>
+            </div>
             <input
               type='number'
               id='height'
